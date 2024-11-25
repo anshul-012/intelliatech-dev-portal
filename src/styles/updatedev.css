@@ -1,0 +1,41 @@
+.update-dev-main-div {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.update-dev-main-div form {
+	display: flex;
+	width: 50%;
+	justify-content: space-between;
+}
+.update-dev-main-div form .outer-div {
+	width: 45% !important;
+}
+
+.loading-div {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.spiner {
+	width: 70px;
+	height: 70px;
+	border: 6px solid #a9a9a9;
+	border-top: 6px solid #050505;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
