@@ -10,7 +10,7 @@ const ImageRender = (data) => {
 	};
 
 	return <button className="profile-bt" onClick={modelHandler}>
-		<img src={"http://localhost:4000" + data?.data?.profile} className="img-pro" alt="" />
+		<img src={"https://api.resource.intelliatech.com" + data?.data?.profile} className="img-pro" alt="" />
 		View </button>;
 };
 
