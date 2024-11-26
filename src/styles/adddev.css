@@ -97,6 +97,11 @@
 	width: 100%;
 }
 
+.input-div input::placeholder {
+	color: rgb(227, 227, 227);
+	opacity: 0.8;
+}
+
 .input-div select {
 	padding: 12px;
 	border-radius: 4px;
@@ -109,13 +114,18 @@
 
 .input-div button {
 	padding: 12px;
-	font-size: 16px;
 	font-size: 400;
-	margin-top: 0.8rem;
-	background-color: crimson;
-	border-radius: 4px;
+	margin-top: 0.7rem;
 	color: white;
 	border: crimson;
+	padding: 0.8rem;
+	font-weight: 550;
+	background-color: crimson;
+	box-shadow: rgb(99, 99, 99) 4px 4px 4px;
+	color: white;
+	box-shadow: -2px -2px 4px #d1d1d1;
+	border: none;
+	border-radius: 8px;
 }
 @keyframes spin {
 	0% {

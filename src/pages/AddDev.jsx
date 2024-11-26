@@ -57,16 +57,20 @@ const AddDev = () => {
 						<input name="email" type="text" placeholder="Email" />
 					</div>
 					<div className="input-div">
-						<label htmlFor="">Main Skill</label>
+						<label htmlFor="">Primary Skill</label>
 						<input name="mainSkill" type="text" placeholder="Eg React.js" />
 					</div>
 					<div className="input-div">
-						<label htmlFor="">Skill</label>
-						<input name="skills" type="text" placeholder="Skill" />
+						<label htmlFor="">Skills</label>
+						<input name="skills" type="text" placeholder="Java, Microservices, ..." />
 					</div>
 					<div className="input-div">
 						<label htmlFor="">Experience</label>
-						<input name="experience" type="text" placeholder="Experience" />
+						<input name="experience" type="text" placeholder=" 2 Years" />
+					</div>
+					<div className="input-div">
+						<label htmlFor="">Experience Range</label>
+						<input name="experienceRange" type="text" placeholder="2 - 5 Years" />
 					</div>
 
 				</div>
@@ -100,7 +104,7 @@ const AddDev = () => {
 							<option value="ONPROJECT">ON PROJECT</option>
 						</select>					</div>
 					<div className="input-div">
-						<label htmlFor="">Profile</label>
+						<label htmlFor="">Profile Picture</label>
 						<input name="profile" accept="image/*" type="file" placeholder="Name" />
 					</div>
 

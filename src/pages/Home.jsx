@@ -16,9 +16,9 @@ const Home = () => {
   const [isPopup, setIsPopup] = useState(false);
   const [isPopupResume, setIsPopupResume] = useState(false);
   const [resumePdf, setResumePdf] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false); 
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
-  const gridApi = useRef(null); 
+  const gridApi = useRef(null);
   const admin = JSON.parse(localStorage.getItem("ADMIN"))
 
   const autoGroupColumnDef = {
@@ -33,12 +33,27 @@ const Home = () => {
   const [rowData, setRowData] = useState([]);
 
   const [colDefs, setColDefs] = useState([
-   
+
+    {
+      field: "bench",
+      headerName: "",
+      width: 10,
+      cellRenderer: (data) => {
+        console.log(data.data.bench);
+
+        if (data?.data?.bench !== "ONBENCH") {
+          return <div className="bench"></div>
+        }
+        return <div className="project"></div>
+      }
+
+    },
     { field: "name" },
-    { field: "mainSkill", rowGroup: true, hide: false },
+    { field: "mainSkill", headerName: "Primary Skill", rowGroup: true, hide: false },
     // { field: "skills", filter: 'agTextColumnFilter' }, 
-    { field: "skills", filter: 'agSetColumnFilter' }, 
+    { field: "skills", filter: 'agSetColumnFilter' },
     { field: "experience" },
+    { field: "experienceRange" },
     { field: "engineerType" },
     { field: "resume", cellRenderer: ResumeButton },
     { field: "profile", cellRenderer: ImageRender },
@@ -50,7 +65,7 @@ const Home = () => {
       setIsAdmin(true);
     }
 
-    axios.get(`https://api.resource.intelliatech.com/api/developers?status=false`,{ withCredentials:true}).then((res) => {
+    axios.get(`https://api.resource.intelliatech.com/api/developers?status=false`, { withCredentials: true }).then((res) => {
       const data = res.data.data;
       if (data) {
         setRowData(data);
@@ -60,7 +75,7 @@ const Home = () => {
 
   const handler = (data) => {
     if (data.colDef.field === "profile") {
-      setProfile("https://api.resource.intelliatech.com"+ data.data.profile);
+      setProfile("https://api.resource.intelliatech.com" + data.data.profile);
       setIsPopup((prev) => !prev);
     }
     if (data.colDef.field === "resume") {
@@ -74,41 +89,41 @@ const Home = () => {
   };
 
   const onGridReady = (params) => {
-    gridApi.current = params.api; 
+    gridApi.current = params.api;
   };
 
-  const redirectToExternal =()=> {
-    window.open('https://intelliatech.com/',"_target");
+  const redirectToExternal = () => {
+    window.open('https://intelliatech.com/', "_target");
   }
 
-  const redirectToHirepage = ()=>{
-    window.open("https://intelliatech.com/contact-us/","_target")
+  const redirectToHirepage = () => {
+    window.open("https://intelliatech.com/contact-us/", "_target")
   }
 
   return (
     <div className="home">
       <div className="home-nav">
         <img
-        onClick={redirectToExternal}
-        className="intelliatech-img"
-        src="https://intelliatechcom33628.zapwp.com/q:u/r:1/wp:1/w:228/u:https://intelliatech.com/wp-content/uploads/2023/12/Logo-Black-TM.png"
-        alt=""
+          onClick={redirectToExternal}
+          className="intelliatech-img"
+          src="https://intelliatechcom33628.zapwp.com/q:u/r:1/wp:1/w:228/u:https://intelliatech.com/wp-content/uploads/2023/12/Logo-Black-TM.png"
+          alt=""
         />
 
-        
 
-       {admin ? <button  className="home-btn"
-       onClick={()=> 
-        navigate("/admin")
-       }>Admin Panel</button> :
-        <div className="button-container">
-          <button onClick={redirectToHirepage}>
-            Hire A Developer
-          </button>
-          {isAdmin && (
-            <button onClick={handleAdminClick}>Admin Page</button>
-          )}
-        </div>}
+
+        {admin ? <button className="home-btn"
+          onClick={() =>
+            navigate("/admin")
+          }>Admin Panel</button> :
+          <div className="button-container">
+            <button onClick={redirectToHirepage}>
+              Hire A Developer
+            </button>
+            {isAdmin && (
+              <button onClick={handleAdminClick}>Admin Page</button>
+            )}
+          </div>}
       </div>
       {isPopupResume ? (
         <ResumePopup url={resumePdf} setIsOpen={setIsPopupResume} />
@@ -123,14 +138,14 @@ const Home = () => {
           autoGroupColumnDef={autoGroupColumnDef}
           groupSelectsChildren={true}
           rowSelection={"multiple"}
-          groupDefaultExpanded={1} 
-          pagination={false} 
-          paginationPageSize={50} 
+          groupDefaultExpanded={1}
+          pagination={false}
+          paginationPageSize={50}
           // domLayout='autoHeight' 
           groupDisplayType="groupRows"
-          onGridReady={onGridReady} 
+          onGridReady={onGridReady}
         />
-       
+
 
       </div>
       <Footer />

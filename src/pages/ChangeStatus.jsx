@@ -25,6 +25,7 @@ const ChangeStatus = () => {
 		{ field: "mainSkill" },
 		{ field: "skills" },
 		{ field: "experience" },
+		{ field: "experienceRange" },
 		{ field: "engineerType" },
 		{ field: "email" },
 		{
