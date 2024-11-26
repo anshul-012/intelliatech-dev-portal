@@ -132,7 +132,11 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 0 0rem;
+		padding: 0 1rem;
+	}
+
+	.ag-div {
+		padding: 0 1rem;
 	}
 
 	.intelliatech-img {
