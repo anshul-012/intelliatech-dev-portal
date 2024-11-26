@@ -95,6 +95,10 @@ const UpdateDev = () => {
                         <label htmlFor="">Experience</label>
                         <input name="experience" onChange={changeHanlder} value={oldDeveloperData?.experience} type="text" placeholder="Experience" />
                     </div>
+                    <div className="input-div">
+						<label htmlFor="">Experience Range</label>
+						<input name="experienceRange" type="text" placeholder="2 - 5 Years" />
+					</div>
 
                 </div>
                 <div className="outer-div">
